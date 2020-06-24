@@ -36,8 +36,7 @@ class SharedPrefsHelper @Inject constructor(private val mSharedPreferences: Shar
     }
 
     companion object {
-        const val PREF_USER = "app_default_pref"
-        const val PREF_USER_ID = "app_user_id_pref"
+        const val PREF_LIST_ORDER = "app_list_order"
     }
 
 }

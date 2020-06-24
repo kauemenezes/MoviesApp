@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MoviesApp</string>
+    <string name="text_connection_unavailable">Connection unavailable</string>
+    <string name="text_main_generic_error">Could not get data</string>
+    <string name="search_text">Search…</string>
+
+    <string name="movies_fragment_title">Movies</string>
+    <string name="movies_empty">There are no movies</string>
+
+    <string name="movie_details_title">Movie Details</string>
 </resources>

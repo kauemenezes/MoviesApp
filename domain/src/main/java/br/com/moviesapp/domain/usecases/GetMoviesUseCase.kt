@@ -3,9 +3,9 @@ package br.com.moviesapp.domain.usecases
 import br.com.moviesapp.domain.repository.MoviesRepository
 import javax.inject.Inject
 
-class LoadMoviesUseCase @Inject constructor(
+class GetMoviesUseCase @Inject constructor(
     private val moviesRepository: MoviesRepository
 ) {
-    suspend operator fun invoke() =
-        moviesRepository.loadMovies()
+    operator fun invoke() =
+        moviesRepository.getMovies()
 }

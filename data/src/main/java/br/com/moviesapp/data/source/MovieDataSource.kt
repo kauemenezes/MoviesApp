@@ -17,7 +17,7 @@ class MovieDataSource @Inject constructor(
     suspend fun loadMovies() {
         val moviesListResponse = apiService.loadMovies()
         moviesDao.clearAndInsert(
-            moviesListResponse.statementList!!.toEntity()
+            moviesListResponse.toEntity()
         )
     }
 
