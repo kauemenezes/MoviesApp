@@ -7,7 +7,9 @@ import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import br.com.moviesapp.R
@@ -27,9 +29,12 @@ import javax.inject.Inject
 class MoviesFragment : Fragment() {
 
     @Inject
-    lateinit var viewModel: MoviesViewModel
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject
     lateinit var sharedPrefsHelper: SharedPrefsHelper
+    private val viewModel by activityViewModels<MoviesViewModel>{
+        viewModelFactory
+    }
     private val moviesListAdapter: MoviesListAdapter by lazy {
         MoviesListAdapter(this) {
             callMovieDetails(it)
@@ -163,7 +168,8 @@ class MoviesFragment : Fragment() {
     }
 
     private fun callMovieDetails(movie: Movie) {
-        val action = MoviesFragmentDirections.nextMovieDetails(movie.id)
+        viewModel.setMovie(movie)
+        val action = MoviesFragmentDirections.nextMovieDetails()
         findNavController().navigate(action)
     }
 }

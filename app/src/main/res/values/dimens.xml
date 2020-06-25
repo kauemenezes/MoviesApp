@@ -3,34 +3,16 @@
     <dimen name="margin_default">18dp</dimen>
     <dimen name="padding_default">16dp</dimen>
 
-    <!-- Login -->
-    <dimen name="dimen_scroll_margin_bottom">14dp</dimen>
-    <dimen name="dimen_login_text_padding">8dp</dimen>
-    <dimen name="dimen_login_text_margin_top">70dp</dimen>
-    <dimen name="dimen_login_default_margin">18dp</dimen>
-    <dimen name="dimen_login_user_input_margin_top">100dp</dimen>
-    <dimen name="dimen_login_password_input_margin_top">10dp</dimen>
-    <dimen name="dimen_login_button_margin_bottom">40dp</dimen>
-    <dimen name="dimen_login_button_height">52dp</dimen>
-    <dimen name="dimen_login_button_width">196dp</dimen>
-
-    <!-- Main -->
-    <dimen name="dimen_main_padding_bottom">16dp</dimen>
-    <dimen name="dimen_main_default_margin_end">18dp</dimen>
-    <dimen name="dimen_main_default_margin_start">20dp</dimen>
-    <dimen name="dimen_main_default_margin_top">8dp</dimen>
-    <dimen name="dimen_main_name_text_margin_top">14dp</dimen>
-    <dimen name="dimen_main_exit_image_size">34dp</dimen>
-    <dimen name="dimen_main_exit_image_margin_top">26dp</dimen>
-    <dimen name="dimen_main_account_text_margin_top">5dp</dimen>
-    <dimen name="dimen_main_balance_text_margin_top">5dp</dimen>
-    <dimen name="dimen_main_name_text_font_size">26sp</dimen>
-    <dimen name="dimen_main_default_font_size">24sp</dimen>
-    <dimen name="dimen_statement_layout_padding_bottom">14dp</dimen>
-    <dimen name="dimen_main_payment_text_margin_top">10dp</dimen>
-    <dimen name="dimen_statement_layout_default_margin_top">20dp</dimen>
+    <!-- Movies Fragment -->
     <dimen name="dimen_card_view_margin_start_end">12dp</dimen>
     <dimen name="dimen_card_view_margin_top_bottom">8dp</dimen>
+    <dimen name="movie_item_image_height">80dp</dimen>
+    <dimen name="movie_item_image_width">60dp</dimen>
+    <dimen name="movie_item_margin">16dp</dimen>
+
+    <!-- Movie Details Fragment -->
+    <dimen name="movie_title_text_size">28sp</dimen>
+    <dimen name="movie_post_image_size">300dp</dimen>
 
     <!-- Margins & Padding, 8 dp baseline, https://material.io/guidelines/layout/metrics-keylines.html#metrics-keylines-baseline-grids -->
     <dimen name="md_margin_padding_size_micro">4dp</dimen>

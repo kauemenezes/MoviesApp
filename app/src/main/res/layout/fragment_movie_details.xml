@@ -1,6 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/movie_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/movie_post_image_size"
+                android:fitsSystemWindows="true"
+                android:scaleType="fitCenter"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/md_margin_padding_size_micro"
+                android:paddingStart="@dimen/md_margin_padding_size_medium"
+                android:paddingEnd="@dimen/md_margin_padding_size_medium"
+                android:textSize="@dimen/movie_title_text_size"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                tools:text="@string/example_title"
+                app:layout_constraintTop_toBottomOf="@+id/movie_image"/>
+
+            <TextView
+                android:id="@+id/year_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/md_text_size_micro"
+                android:paddingBottom="@dimen/md_margin_padding_size_small"
+                android:paddingStart="@dimen/md_margin_padding_size_medium"
+                android:paddingEnd="@dimen/md_margin_padding_size_medium"
+                app:layout_constraintTop_toBottomOf="@+id/title_text"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@string/example_year"/>
+
+            <TextView
+                android:id="@+id/rated_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/md_text_size_micro"
+                android:paddingBottom="@dimen/md_margin_padding_size_small"
+                android:paddingStart="0dp"
+                android:paddingEnd="@dimen/md_margin_padding_size_medium"
+                app:layout_constraintTop_toBottomOf="@+id/title_text"
+                app:layout_constraintStart_toEndOf="@+id/year_text"
+                tools:text="@string/example_rated"/>
+
+            <TextView
+                android:id="@+id/runtime_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/md_text_size_micro"
+                android:paddingBottom="@dimen/md_margin_padding_size_small"
+                android:paddingStart="0dp"
+                android:paddingEnd="@dimen/md_margin_padding_size_medium"
+                app:layout_constraintTop_toBottomOf="@+id/title_text"
+                app:layout_constraintStart_toEndOf="@+id/rated_text"
+                tools:text="@string/example_runtime"/>
+
+            <TextView
+                android:id="@+id/plot_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/md_margin_padding_size_small"
+                android:paddingStart="@dimen/md_margin_padding_size_medium"
+                android:paddingEnd="@dimen/md_margin_padding_size_medium"
+                android:textSize="@dimen/md_text_size_medium"
+                android:textColor="@color/black"
+                tools:text="@string/example_plot"
+                app:layout_constraintTop_toBottomOf="@+id/year_text"/>
+
+            <TextView
+                android:id="@+id/genre_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/md_margin_padding_size_small"
+                android:paddingStart="@dimen/md_margin_padding_size_medium"
+                android:paddingEnd="@dimen/md_margin_padding_size_medium"
+                android:textSize="@dimen/md_text_size_medium"
+                android:textColor="@color/black"
+                tools:text="@string/example_genre"
+                app:layout_constraintTop_toBottomOf="@+id/plot_text"/>
+
+            <TextView
+                android:id="@+id/actors_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/md_margin_padding_size_micro"
+                android:paddingStart="@dimen/md_margin_padding_size_medium"
+                android:paddingEnd="@dimen/md_margin_padding_size_medium"
+                android:textSize="@dimen/md_text_size_medium"
+                android:textColor="@color/black"
+                android:text="@string/movie_details_actors_label"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/genre_text"/>
+
+            <TextView
+                android:id="@+id/actors_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/md_margin_padding_size_small"
+                android:paddingStart="@dimen/md_margin_padding_size_medium"
+                android:paddingEnd="@dimen/md_margin_padding_size_medium"
+                android:textSize="@dimen/md_text_size_medium"
+                android:textColor="@color/black"
+                tools:text="@string/example_actor"
+                app:layout_constraintTop_toBottomOf="@+id/actors_label"/>
+
+            <TextView
+                android:id="@+id/director_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/md_margin_padding_size_micro"
+                android:paddingStart="@dimen/md_margin_padding_size_medium"
+                android:paddingEnd="@dimen/md_margin_padding_size_medium"
+                android:textSize="@dimen/md_text_size_medium"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="@string/movie_details_director_label"
+                app:layout_constraintTop_toBottomOf="@+id/actors_text"/>
+
+            <TextView
+                android:id="@+id/director_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/md_margin_padding_size_small"
+                android:paddingStart="@dimen/md_margin_padding_size_medium"
+                android:paddingEnd="@dimen/md_margin_padding_size_medium"
+                android:textSize="@dimen/md_text_size_medium"
+                android:textColor="@color/black"
+                tools:text="@string/example_director"
+                app:layout_constraintTop_toBottomOf="@+id/director_label"/>
+
+            <TextView
+                android:id="@+id/writers_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/md_margin_padding_size_micro"
+                android:paddingStart="@dimen/md_margin_padding_size_medium"
+                android:paddingEnd="@dimen/md_margin_padding_size_medium"
+                android:textSize="@dimen/md_text_size_medium"
+                android:text="@string/movie_details_writers_label"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/director_text"/>
+
+            <TextView
+                android:id="@+id/writers_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/md_margin_padding_size_small"
+                android:paddingStart="@dimen/md_margin_padding_size_medium"
+                android:paddingEnd="@dimen/md_margin_padding_size_medium"
+                android:textSize="@dimen/md_text_size_medium"
+                android:textColor="@color/black"
+                tools:text="@string/example_writer"
+                app:layout_constraintTop_toBottomOf="@+id/writers_label"/>
+
+            <TextView
+                android:id="@+id/released_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/md_margin_padding_size_micro"
+                android:paddingStart="@dimen/md_margin_padding_size_medium"
+                android:paddingEnd="@dimen/md_margin_padding_size_medium"
+                android:textSize="@dimen/md_text_size_medium"
+                android:text="@string/movie_details_released_label"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/writers_text"/>
+
+            <TextView
+                android:id="@+id/released_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/md_margin_padding_size_small"
+                android:paddingStart="@dimen/md_margin_padding_size_medium"
+                android:paddingEnd="@dimen/md_margin_padding_size_medium"
+                android:textSize="@dimen/md_text_size_medium"
+                android:textColor="@color/black"
+                tools:text="@string/example_released"
+                app:layout_constraintTop_toBottomOf="@+id/released_label"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

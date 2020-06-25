@@ -1,13 +1,9 @@
 package br.com.moviesapp.ui.movies
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import br.com.moviesapp.commons.Loading
 import br.com.moviesapp.commons.Success
 import br.com.moviesapp.domain.models.Movie
-import br.com.moviesapp.domain.usecases.GetMovieUseCase
 import br.com.moviesapp.domain.usecases.GetMoviesUseCase
 import br.com.moviesapp.domain.usecases.LoadMoviesUseCase
 import br.com.moviesapp.ui.UiStateViewModel
@@ -17,9 +13,12 @@ import javax.inject.Inject
 
 class MoviesViewModel @Inject constructor(
     private val loadMoviesUseCase: LoadMoviesUseCase,
-    private val getMoviesUseCase: GetMoviesUseCase,
-    private val getMovieUseCase: GetMovieUseCase
+    private val getMoviesUseCase: GetMoviesUseCase
 ) : UiStateViewModel() {
+
+    private val _movie = MutableLiveData<Movie>()
+    val movie: LiveData<Movie>
+        get() = _movie
 
     val movies: LiveData<List<Movie>> = liveData {
         getMoviesUseCase().collect {
@@ -35,7 +34,7 @@ class MoviesViewModel @Inject constructor(
         }
     }
 
-    fun getMovie(movieId: String): LiveData<Movie> {
-        return getMovieUseCase(movieId).asLiveData()
+    fun setMovie(movie: Movie) {
+        _movie.value = movie
     }
 }

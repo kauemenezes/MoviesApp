@@ -17,14 +17,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:padding="@dimen/padding_default"
         >
 
         <ImageView
             android:id="@+id/poster_image"
-            android:layout_width="60dp"
-            android:layout_height="80dp"
-            android:contentDescription="poster"
+            android:layout_width="@dimen/movie_item_image_width"
+            android:layout_height="@dimen/movie_item_image_height"
+            android:contentDescription="@string/movies_fragment_poster_description"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -33,39 +33,40 @@
             android:id="@+id/title_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/movie_item_margin"
             android:layout_marginEnd="@dimen/margin_default"
             android:textSize="@dimen/md_text_size_medium"
             android:maxLines="1"
+            android:ellipsize="end"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@+id/poster_image"
-            tools:text="R$1.000,00"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/released_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/md_margin_padding_size_small"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/movie_item_margin"
             android:layout_marginEnd="@dimen/margin_default"
             android:textSize="@dimen/md_text_size_small"
             android:maxLines="1"
             app:layout_constraintTop_toBottomOf="@+id/title_text"
             app:layout_constraintStart_toEndOf="@+id/poster_image"
-            tools:text="R$1.000,00"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/genre_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/md_margin_padding_size_small"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/movie_item_margin"
             android:layout_marginEnd="@dimen/margin_default"
             android:textSize="@dimen/md_text_size_small"
             android:maxLines="1"
             app:layout_constraintTop_toBottomOf="@+id/released_text"
             app:layout_constraintStart_toEndOf="@+id/poster_image"
-            tools:text="R$1.000,00"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -3,9 +3,29 @@
     <string name="text_connection_unavailable">Connection unavailable</string>
     <string name="text_main_generic_error">Could not get data</string>
     <string name="search_text">Search…</string>
+    <string name="menu_save_list_order_text">Save list order</string>
+    <string name="toast_save_list_order_text">List order saved successfully</string>
 
+    <!-- Movies Fragment -->
     <string name="movies_fragment_title">Movies</string>
-    <string name="movies_empty">There are no movies</string>
+    <string name="movies_fragment_poster_description">Poster</string>
 
+    <!-- Movie Details Fragment -->
     <string name="movie_details_title">Movie Details</string>
+    <string name="movie_details_actors_label">Actors</string>
+    <string name="movie_details_director_label">Director</string>
+    <string name="movie_details_writers_label">Writers</string>
+    <string name="movie_details_released_label">Released</string>
+
+    <!-- Data example -->
+    <string name="example_title">Iron Man</string>
+    <string name="example_plot">After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.</string>
+    <string name="example_genre">Action, Adventure, Sci-Fi</string>
+    <string name="example_director">Jon Favreau</string>
+    <string name="example_writer">Mark Fergus (screenplay), Hawk Ostby (screenplay), Art Marcum (screenplay), Matt Holloway (screenplay), Stan Lee (characters), Don Heck (characters), Larry Lieber (characters), Jack Kirby (characters)</string>
+    <string name="example_actor">Robert Downey Jr., Terrence Howard, Jeff Bridges, Gwyneth Paltrow</string>
+    <string name="example_released">02 May 2008</string>
+    <string name="example_runtime">126 min</string>
+    <string name="example_year">2008</string>
+    <string name="example_rated">PG-13</string>
 </resources>

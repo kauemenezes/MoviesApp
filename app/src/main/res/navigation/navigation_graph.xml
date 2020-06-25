@@ -21,10 +21,6 @@
         android:name="br.com.moviesapp.ui.moviedetails.MovieDetailsFragment"
         android:label="@string/movie_details_title"
         tools:layout="@layout/fragment_movie_details">
-
-        <argument
-            android:name="movieId"
-            app:argType="string"/>
     </fragment>
 
 </navigation>

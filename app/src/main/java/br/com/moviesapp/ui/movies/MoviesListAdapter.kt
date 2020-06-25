@@ -8,7 +8,6 @@ import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.NonNull
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import br.com.moviesapp.R
@@ -95,7 +94,6 @@ class MoviesListAdapter(private val fragment: MoviesFragment, val onClick: (Movi
                 filteredMovies = (results!!.values as List<Movie>).toMutableList()
                 notifyDataSetChanged()
             }
-
         }
     }
 
@@ -121,16 +119,6 @@ class MoviesListAdapter(private val fragment: MoviesFragment, val onClick: (Movi
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             TODO("Not yet implemented")
-        }
-    }
-
-    companion object {
-        private val MOVIES_COMPARATOR = object : DiffUtil.ItemCallback<Movie>() {
-            override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean =
-                oldItem.id == newItem.id
-
-            override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean =
-                oldItem == newItem
         }
     }
 }
