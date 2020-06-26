@@ -16,6 +16,10 @@ class MoviesViewModel @Inject constructor(
     private val getMoviesUseCase: GetMoviesUseCase
 ) : UiStateViewModel() {
 
+    init {
+        loadMovies(false)
+    }
+
     private val _movie = MutableLiveData<Movie>()
     val movie: LiveData<Movie>
         get() = _movie

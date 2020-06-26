@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -70,34 +71,37 @@ class MoviesFragment : Fragment() {
         itemTouchHelper.attachToRecyclerView(movies_recyclerview)
         subscribeObservers()
         addListener()
-        getMovies(false)
     }
 
     private fun addListener() {
         swipe_refresh_movies.setColorSchemeResources(R.color.colorPrimary)
         swipe_refresh_movies.setOnRefreshListener {
-            getMovies(true)
+            getMovies()
         }
     }
 
     private fun subscribeObservers() {
         viewModel.uiState.observe(viewLifecycleOwner, Observer {
             when (it) {
-                is Loading -> displayLoadingState()
+                is Loading -> {
+                    displayLoadingState()
+                }
                 is Success -> {
                     hideLoadingState()
                     swipe_refresh_movies.isRefreshing = false
                 }
                 is Error -> {
+                    if (progress_movies.isVisible || swipe_refresh_movies.isRefreshing) {
+                        val text = if (it.error is UnknownHostException) {
+                            getString(R.string.text_connection_unavailable)
+                        } else {
+                            getString(R.string.text_main_generic_error)
+                        }
+                        val toast = Toast.makeText(requireContext(), text, Toast.LENGTH_LONG)
+                        toast.show()
+                    }
                     hideLoadingState()
                     swipe_refresh_movies.isRefreshing = false
-                    val text = if (it.error is UnknownHostException) {
-                        getString(R.string.text_connection_unavailable)
-                    } else {
-                        getString(R.string.text_main_generic_error)
-                    }
-                    val toast = Toast.makeText(requireContext(), text, Toast.LENGTH_LONG)
-                    toast.show()
                 }
             }
         })
@@ -119,8 +123,8 @@ class MoviesFragment : Fragment() {
         progress_movies.visibility = View.GONE
     }
 
-    private fun getMovies(forceRefresh: Boolean) {
-        viewModel.loadMovies(forceRefresh)
+    private fun getMovies() {
+        viewModel.loadMovies(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
