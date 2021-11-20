@@ -7,7 +7,7 @@ import br.com.moviesapp.BuildConfig
 import br.com.moviesapp.data.api.MoviesApiService
 import br.com.moviesapp.data.db.MoviesDatabase
 import br.com.moviesapp.data.utils.SharedPrefsHelper
-import br.com.moviesapp.utils.Constants
+import br.com.moviesapp.util.Constants
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

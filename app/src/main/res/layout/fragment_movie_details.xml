@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="MovieDetails">
+
+        <variable
+            name="movie"
+            type="br.com.moviesapp.domain.models.Movie" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -21,6 +28,7 @@
                 android:layout_height="@dimen/movie_post_image_size"
                 android:fitsSystemWindows="true"
                 android:scaleType="fitCenter"
+                app:moviePoster="@{movie.poster}"
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
@@ -33,6 +41,7 @@
                 android:textSize="@dimen/movie_title_text_size"
                 android:textStyle="bold"
                 android:textColor="@color/black"
+                android:text="@{movie.title}"
                 tools:text="@string/example_title"
                 app:layout_constraintTop_toBottomOf="@+id/movie_image"/>
 
@@ -70,6 +79,7 @@
                 android:paddingEnd="@dimen/md_margin_padding_size_small"
                 app:layout_constraintTop_toBottomOf="@+id/title_text"
                 app:layout_constraintStart_toEndOf="@+id/rated_text"
+                android:text="@{movie.runtime}"
                 tools:text="@string/example_runtime"/>
 
             <TextView
@@ -81,6 +91,7 @@
                 android:paddingEnd="@dimen/md_margin_padding_size_medium"
                 android:textSize="@dimen/md_text_size_medium"
                 android:textColor="@color/black"
+                android:text="@{movie.plot}"
                 tools:text="@string/example_plot"
                 app:layout_constraintTop_toBottomOf="@+id/year_text"/>
 
@@ -93,6 +104,7 @@
                 android:paddingEnd="@dimen/md_margin_padding_size_medium"
                 android:textSize="@dimen/md_text_size_medium"
                 android:textColor="@color/black"
+                android:text="@{movie.genre}"
                 tools:text="@string/example_genre"
                 app:layout_constraintTop_toBottomOf="@+id/plot_text"/>
 
@@ -118,6 +130,7 @@
                 android:paddingEnd="@dimen/md_margin_padding_size_medium"
                 android:textSize="@dimen/md_text_size_medium"
                 android:textColor="@color/black"
+                android:text="@{movie.actors}"
                 tools:text="@string/example_actor"
                 app:layout_constraintTop_toBottomOf="@+id/actors_label"/>
 
@@ -143,6 +156,7 @@
                 android:paddingEnd="@dimen/md_margin_padding_size_medium"
                 android:textSize="@dimen/md_text_size_medium"
                 android:textColor="@color/black"
+                android:text="@{movie.director}"
                 tools:text="@string/example_director"
                 app:layout_constraintTop_toBottomOf="@+id/director_label"/>
 
@@ -168,6 +182,7 @@
                 android:paddingEnd="@dimen/md_margin_padding_size_medium"
                 android:textSize="@dimen/md_text_size_medium"
                 android:textColor="@color/black"
+                android:text="@{movie.writer}"
                 tools:text="@string/example_writer"
                 app:layout_constraintTop_toBottomOf="@+id/writers_label"/>
 
@@ -193,6 +208,7 @@
                 android:paddingEnd="@dimen/md_margin_padding_size_medium"
                 android:textSize="@dimen/md_text_size_medium"
                 android:textColor="@color/black"
+                android:text="@{movie.released}"
                 tools:text="@string/example_released"
                 app:layout_constraintTop_toBottomOf="@+id/released_label"/>
 
@@ -200,3 +216,4 @@
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

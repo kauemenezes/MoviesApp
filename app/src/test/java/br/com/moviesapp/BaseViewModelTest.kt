@@ -1,7 +1,7 @@
 package br.com.moviesapp
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import br.com.moviesapp.utils.CoroutineTestRule
+import br.com.moviesapp.util.CoroutineTestRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Rule
 
