@@ -11,7 +11,7 @@ import br.com.moviesapp.data.db.entity.MovieEntity
 import br.com.moviesapp.data.repository.MoviesRepositoryImpl
 import br.com.moviesapp.data.source.MovieDataSource
 import br.com.moviesapp.domain.repository.MoviesRepository
-import br.com.moviesapp.utils.SampleData
+import br.com.moviesapp.util.SampleData
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi

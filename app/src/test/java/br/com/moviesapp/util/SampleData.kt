@@ -1,4 +1,4 @@
-package br.com.moviesapp.utils
+package br.com.moviesapp.util
 
 import br.com.moviesapp.data.api.network_responses.MovieResponse
 

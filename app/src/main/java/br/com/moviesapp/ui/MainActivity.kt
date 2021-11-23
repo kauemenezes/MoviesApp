@@ -7,11 +7,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import br.com.moviesapp.BaseApplication
 import br.com.moviesapp.R
+import br.com.moviesapp.databinding.ActivityMainBinding
 import br.com.moviesapp.di.main.MainComponent
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var mainComponent: MainComponent
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Creates an instance of Main component by grabbing the factory from the app graph
@@ -19,9 +20,10 @@ class MainActivity : AppCompatActivity() {
             .mainComponent().create()
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
         val host: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment? ?: return
         setupActionBarWithNavController(host.navController)

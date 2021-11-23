@@ -1,4 +1,4 @@
-package br.com.moviesapp.utils
+package br.com.moviesapp.util
 
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData

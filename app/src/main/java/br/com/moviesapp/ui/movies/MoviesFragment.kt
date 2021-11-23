@@ -18,11 +18,11 @@ import br.com.moviesapp.commons.Error
 import br.com.moviesapp.commons.Loading
 import br.com.moviesapp.commons.Success
 import br.com.moviesapp.data.utils.SharedPrefsHelper
+import br.com.moviesapp.databinding.FragmentMoviesBinding
 import br.com.moviesapp.domain.models.Movie
 import br.com.moviesapp.ui.MainActivity
-import br.com.moviesapp.utils.checkAndSortList
-import br.com.moviesapp.utils.saveListOrderInPreferences
-import kotlinx.android.synthetic.main.fragment_movies.*
+import br.com.moviesapp.util.checkAndSortList
+import br.com.moviesapp.util.saveListOrderInPreferences
 import java.net.UnknownHostException
 import javax.inject.Inject
 
@@ -42,6 +42,8 @@ class MoviesFragment : Fragment() {
         }
     }
     private var searchView: SearchView? = null
+    private var _binding: FragmentMoviesBinding? = null
+    private val binding get() = _binding!!
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -57,7 +59,8 @@ class MoviesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        return inflater.inflate(R.layout.fragment_movies, container, false)
+        _binding = FragmentMoviesBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,17 +68,22 @@ class MoviesFragment : Fragment() {
         initComponents()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun initComponents() {
-        movies_recyclerview.adapter = moviesListAdapter
+        binding.moviesRecyclerview.adapter = moviesListAdapter
         val itemTouchHelper = ItemTouchHelper(moviesListAdapter.simpleCallback)
-        itemTouchHelper.attachToRecyclerView(movies_recyclerview)
+        itemTouchHelper.attachToRecyclerView(binding.moviesRecyclerview)
         subscribeObservers()
         addListener()
     }
 
     private fun addListener() {
-        swipe_refresh_movies.setColorSchemeResources(R.color.colorPrimary)
-        swipe_refresh_movies.setOnRefreshListener {
+        binding.swipeRefreshMovies.setColorSchemeResources(R.color.colorPrimary)
+        binding.swipeRefreshMovies.setOnRefreshListener {
             getMovies()
         }
     }
@@ -88,10 +96,10 @@ class MoviesFragment : Fragment() {
                 }
                 is Success -> {
                     hideLoadingState()
-                    swipe_refresh_movies.isRefreshing = false
+                    binding.swipeRefreshMovies.isRefreshing = false
                 }
                 is Error -> {
-                    if (progress_movies.isVisible || swipe_refresh_movies.isRefreshing) {
+                    if (binding.progressMovies.isVisible || binding.swipeRefreshMovies.isRefreshing) {
                         val text = if (it.error is UnknownHostException) {
                             getString(R.string.text_connection_unavailable)
                         } else {
@@ -101,26 +109,26 @@ class MoviesFragment : Fragment() {
                         toast.show()
                     }
                     hideLoadingState()
-                    swipe_refresh_movies.isRefreshing = false
+                    binding.swipeRefreshMovies.isRefreshing = false
                 }
             }
         })
 
-        viewModel.movies.observe(viewLifecycleOwner, Observer { movies ->
+        viewModel.movies.observe(viewLifecycleOwner) { movies ->
             if (!movies.isNullOrEmpty()) {
                 checkAndSortList(movies.toMutableList(), moviesListAdapter, sharedPrefsHelper)
             }
-        })
+        }
     }
 
     private fun displayLoadingState() {
-        movies_recyclerview.visibility = View.GONE
-        progress_movies.visibility = View.VISIBLE
+        binding.moviesRecyclerview.visibility = View.GONE
+        binding.progressMovies.visibility = View.VISIBLE
     }
 
     private fun hideLoadingState() {
-        movies_recyclerview.visibility = View.VISIBLE
-        progress_movies.visibility = View.GONE
+        binding.moviesRecyclerview.visibility = View.VISIBLE
+        binding.progressMovies.visibility = View.GONE
     }
 
     private fun getMovies() {

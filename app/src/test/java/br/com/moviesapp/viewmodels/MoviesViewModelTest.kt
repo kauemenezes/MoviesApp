@@ -7,7 +7,7 @@ import br.com.moviesapp.domain.models.Movie
 import br.com.moviesapp.domain.usecases.GetMoviesUseCase
 import br.com.moviesapp.domain.usecases.LoadMoviesUseCase
 import br.com.moviesapp.ui.movies.MoviesViewModel
-import br.com.moviesapp.utils.getOrAwaitValue
+import br.com.moviesapp.util.getOrAwaitValue
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
