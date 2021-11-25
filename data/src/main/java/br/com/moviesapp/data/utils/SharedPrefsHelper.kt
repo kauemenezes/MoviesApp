@@ -1,11 +1,8 @@
 package br.com.moviesapp.data.utils
 
 import android.content.SharedPreferences
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class SharedPrefsHelper @Inject constructor(private val mSharedPreferences: SharedPreferences) {
+class SharedPrefsHelper(private val mSharedPreferences: SharedPreferences) {
 
     fun put(key: String?, value: String?) {
         mSharedPreferences.edit().putString(key, value).apply()

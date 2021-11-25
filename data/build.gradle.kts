@@ -2,7 +2,6 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     kotlin("android")
-//    kotlin("android-extensions")
     kotlin("kapt")
 }
 
@@ -55,8 +54,4 @@ dependencies {
     kapt(Build.ROOM_COMPILER)
     // Kotlin Extensions and Coroutines support for Room
     implementation(Build.ROOM_KTX)
-
-    // -- Dagger
-    implementation(Build.DAGGER)
-    kapt(Build.DAGGER_COMPILER)
 }

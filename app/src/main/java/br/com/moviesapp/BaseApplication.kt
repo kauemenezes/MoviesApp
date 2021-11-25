@@ -1,24 +1,19 @@
 package br.com.moviesapp
 
 import android.app.Application
-import br.com.moviesapp.di.AppComponent
-import br.com.moviesapp.di.DaggerAppComponent
+import br.com.moviesapp.di.*
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
 open class BaseApplication : Application() {
 
-    open val appComponent: AppComponent by lazy {
-        initializeComponent()
-    }
-
-    private fun initializeComponent(): AppComponent {
-        // Creates an instance of AppComponent using its Factory constructor
-        // We pass the applicationContext that will be used as Context in the graph
-        return DaggerAppComponent.builder()
-            .application(this)
-            .build()
-    }
-
     override fun onCreate() {
         super.onCreate()
+        startKoin {
+            androidContext(this@BaseApplication)
+            androidLogger()
+            modules(listOf(networkModule, viewModelModule, databaseModule, useCaseModule))
+        }
     }
 }

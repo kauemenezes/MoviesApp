@@ -7,9 +7,8 @@ import br.com.moviesapp.data.mappers.toEntity
 import br.com.moviesapp.domain.models.Movie
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
-class MovieDataSource @Inject constructor(
+class MovieDataSource(
     private val apiService: MoviesApiService,
     private val moviesDao: MoviesDao
 ) {

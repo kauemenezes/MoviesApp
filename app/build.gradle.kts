@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-//    kotlin("android-extensions")
     kotlin("kapt")
     id("androidx.navigation.safeargs")
 }
@@ -91,9 +90,8 @@ dependencies {
     // Kotlin Extensions and Coroutines support for Room
     implementation(Build.ROOM_KTX)
 
-    // -- Dagger
-    implementation(Build.DAGGER)
-    kapt(Build.DAGGER_COMPILER)
+    // -- Koin
+    implementation(Build.KOIN)
 
     // Navigation
     implementation(Build.NAVIGATION_FRAGMENT)
@@ -125,6 +123,4 @@ dependencies {
     androidTestImplementation(Build.ESPRESSO_INTENTS)
     androidTestImplementation(Build.ANDROIDX_JUNIT_KTX)
     androidTestImplementation(Build.MOCK_WEB_SERVER)
-    kaptAndroidTest(Build.DAGGER_COMPILER)
-    kaptAndroidTest(Build.DAGGER_PROCESSOR)
 }

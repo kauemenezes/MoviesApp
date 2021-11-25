@@ -6,25 +6,25 @@ object Versions {
     const val minSdkVersion = 21
     const val targetSdkVersion = 31
 
-    //Dependencies Version - Presentation
+    // Dependencies Version - Presentation
     const val appCompat = "1.4.0"
     const val coreKtx = "1.7.0"
     const val constraintLayout = "2.1.2"
     const val swipeRefreshLayout = "1.1.0"
     const val materialDesign = "1.4.0"
-    const val dagger2 = "2.28.3"
+    const val koin = "3.1.3"
     const val lifecycleVersion = "2.4.0"
     const val pagingRuntime = "3.1.0"
     const val coroutines = "1.5.1"
     const val navigation = "2.3.5"
     const val glide = "4.10.0"
 
-    //Data
+    // Data
     const val retrofit = "2.7.1"
     const val room = "2.3.0"
     const val loggingInterceptor = "4.9.1"
 
-    //Testing
+    // Testing
     const val junit = "4.13.2"
     const val espresso = "3.4.0"
     const val androidxJunit = "1.1.3"
@@ -65,9 +65,7 @@ object Build {
     const val ROOM_RUNTIME = "androidx.room:room-runtime:${Versions.room}"
     const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.room}"
     const val ROOM_KTX = "androidx.room:room-ktx:${Versions.room}"
-    const val DAGGER = "com.google.dagger:dagger:${Versions.dagger2}"
-    const val DAGGER_COMPILER = "com.google.dagger:dagger-compiler:${Versions.dagger2}"
-    const val DAGGER_PROCESSOR = "com.google.dagger:dagger-android-processor:${Versions.dagger2}"
+    const val KOIN = "io.insert-koin:koin-android:${Versions.koin}"
     const val GLIDE = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Versions.glide}"
     const val JUNIT = "junit:junit:${Versions.junit}"

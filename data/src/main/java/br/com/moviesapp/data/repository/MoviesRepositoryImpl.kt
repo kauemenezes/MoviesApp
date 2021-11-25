@@ -6,12 +6,11 @@ import br.com.moviesapp.domain.repository.MoviesRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-class MoviesRepositoryImpl @Inject constructor(
+class MoviesRepositoryImpl(
     private val movieDataSource: MovieDataSource,
     private val dispatcher: CoroutineDispatcher
-): MoviesRepository {
+) : MoviesRepository {
 
     override suspend fun loadMovies() {
         withContext(dispatcher) {

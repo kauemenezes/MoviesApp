@@ -8,9 +8,6 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import br.com.moviesapp.R
@@ -20,22 +17,17 @@ import br.com.moviesapp.commons.Success
 import br.com.moviesapp.data.utils.SharedPrefsHelper
 import br.com.moviesapp.databinding.FragmentMoviesBinding
 import br.com.moviesapp.domain.models.Movie
-import br.com.moviesapp.ui.MainActivity
 import br.com.moviesapp.util.checkAndSortList
 import br.com.moviesapp.util.saveListOrderInPreferences
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.net.UnknownHostException
-import javax.inject.Inject
 
 
 class MoviesFragment : Fragment() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-    @Inject
-    lateinit var sharedPrefsHelper: SharedPrefsHelper
-    private val viewModel by activityViewModels<MoviesViewModel>{
-        viewModelFactory
-    }
+    private val sharedPrefsHelper: SharedPrefsHelper by inject()
+    private val moviesViewModel: MoviesViewModel by viewModel()
     private val moviesListAdapter: MoviesListAdapter by lazy {
         MoviesListAdapter(this) {
             callMovieDetails(it)
@@ -44,12 +36,6 @@ class MoviesFragment : Fragment() {
     private var searchView: SearchView? = null
     private var _binding: FragmentMoviesBinding? = null
     private val binding get() = _binding!!
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        // Grabs the mainComponent from the Activity and injects this Fragment
-        (activity as MainActivity).mainComponent.inject(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,7 +75,7 @@ class MoviesFragment : Fragment() {
     }
 
     private fun subscribeObservers() {
-        viewModel.uiState.observe(viewLifecycleOwner, Observer {
+        moviesViewModel.uiState.observe(viewLifecycleOwner) {
             when (it) {
                 is Loading -> {
                     displayLoadingState()
@@ -112,9 +98,9 @@ class MoviesFragment : Fragment() {
                     binding.swipeRefreshMovies.isRefreshing = false
                 }
             }
-        })
+        }
 
-        viewModel.movies.observe(viewLifecycleOwner) { movies ->
+        moviesViewModel.movies.observe(viewLifecycleOwner) { movies ->
             if (!movies.isNullOrEmpty()) {
                 checkAndSortList(movies.toMutableList(), moviesListAdapter, sharedPrefsHelper)
             }
@@ -132,7 +118,7 @@ class MoviesFragment : Fragment() {
     }
 
     private fun getMovies() {
-        viewModel.loadMovies(true)
+        moviesViewModel.loadMovies(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -180,8 +166,7 @@ class MoviesFragment : Fragment() {
     }
 
     private fun callMovieDetails(movie: Movie) {
-        viewModel.setMovie(movie)
-        val action = MoviesFragmentDirections.nextMovieDetails()
+        val action = MoviesFragmentDirections.nextMovieDetails(movie.id)
         findNavController().navigate(action)
     }
 }

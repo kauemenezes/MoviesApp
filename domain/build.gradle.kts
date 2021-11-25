@@ -11,11 +11,9 @@ dependencies {
     // -- Coroutines
     implementation(Build.COROUTINES_CORE)
     implementation(Build.COROUTINES_ANDROID)
-
-    // -- Dagger
-    implementation(Build.DAGGER)
-    kapt(Build.DAGGER_COMPILER)
 }
 
-//sourceCompatibility = "8"
-//targetCompatibility = "8"
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}

@@ -4,25 +4,22 @@ import androidx.lifecycle.*
 import br.com.moviesapp.commons.Loading
 import br.com.moviesapp.commons.Success
 import br.com.moviesapp.domain.models.Movie
+import br.com.moviesapp.domain.usecases.GetMovieUseCase
 import br.com.moviesapp.domain.usecases.GetMoviesUseCase
 import br.com.moviesapp.domain.usecases.LoadMoviesUseCase
 import br.com.moviesapp.ui.UiStateViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class MoviesViewModel @Inject constructor(
+class MoviesViewModel(
     private val loadMoviesUseCase: LoadMoviesUseCase,
-    private val getMoviesUseCase: GetMoviesUseCase
+    private val getMoviesUseCase: GetMoviesUseCase,
+    private val getMovieUseCase: GetMovieUseCase
 ) : UiStateViewModel() {
 
     init {
         loadMovies(false)
     }
-
-    private val _movie = MutableLiveData<Movie>()
-    val movie: LiveData<Movie>
-        get() = _movie
 
     val movies: LiveData<List<Movie>> = liveData {
         getMoviesUseCase().collect {
@@ -38,7 +35,9 @@ class MoviesViewModel @Inject constructor(
         }
     }
 
-    fun setMovie(movie: Movie) {
-        _movie.value = movie
+    fun getMovie(movieId: String): LiveData<Movie> = liveData {
+        getMovieUseCase(movieId).collect {
+            emit(it)
+        }
     }
 }
